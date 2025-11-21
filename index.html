@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="manifest" href="manifest.webmanifest">
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your EQ Trainer – Mood Meter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo.png" alt="Your EQ Trainer" class="logo" />
+        <div>
+          <h1>Your EQ Trainer</h1>
+          <p class="subtitle">Medidor emocional basado en ciencia emocional</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-section="measure">Medir</button>
+    <button class="nav-btn" data-section="history">Dashboard</button>
+    <button class="nav-btn" data-section="about">About</button>
+  </nav>
+
+  <main>
+
+    <!-- SECCIÓN MEDIR -->
+    <section id="measure" class="section visible">
+      <div id="flow-container" class="card">
+        <!-- Aquí JS insertará cada pantalla del flujo -->
+      </div>
+    </section>
+
+    <!-- SECCIÓN DASHBOARD / HISTORIAL -->
+    <section id="history" class="section">
+      <div class="card">
+        <h2>Registro Emocional</h2>
+        <div id="statsContainer"></div>
+      </div>
+
+      <div class="card" style="margin-top: 16px;">
+        <h2>Evolución emocional</h2>
+        <p class="helper-text">
+          Eje Y: Estados emocionales. Eje X: Mediciones.
+        </p>
+        <div class="chart-wrapper">
+          <canvas id="evolutionChart"></canvas>
+        </div>
+        <p class="helper-text small">
+          El centro indica estados emocionales agradables; los picos muestran disrupciones emocionales
+          (alta activación simpática-desagradable o baja activación parasimpática-desagradable).
+        </p>
+      </div>
+
+      <div class="card" style="margin-top: 16px;">
+        <h2>Historial de mediciones</h2>
+        <div id="historyList"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ABOUT -->
+    <section id="about" class="section">
+      <div class="card">
+        <h2>Sobre esta app</h2>
+
+        <p><strong>Your EQ Trainer – Mood Meter</strong> es una herramienta basada en el modelo RULER, desarrollado por Marc Brackett y su equipo en el Centro de Inteligencia Emocional de la Universidad de Yale, en Estados Unidos. Te ayuda a identificar tu estado emocional, el primer paso necesario para una mejor comprensión y gestión emocional (componentes clave de la inteligencia emocional).</p>
+
+        <h3>¿Cómo funciona?</h3>
+
+        <p>Según sus funciones, el Sistema Nervioso Central se divide en Sistema Nervioso Somático y Autónomo.</p>
+
+        <p>Las emociones, que surgen del Sistema Límbico (clave en la arquitectura neural), se expresan fisiológicamente a través de la activación del Sistema Nervioso Autónomo. Éste último se divide a su vez en Sistema Simpático y Parasimpático.</p>
+
+        <p>El Sistema Nervioso Simpático está asociado con estados de activación y alta energía fisiológica: ira, miedo, alegría, excitación. Prepara al cuerpo para la acción.</p>
+
+        <p>El Sistema Nervioso Parasimpático está asociado con estados de desactivación y baja energía: tristeza, calma, agotamiento, alivio. Promueve descanso y recuperación.</p>
+
+        <p>Estas activaciones se miden por niveles de sensaciones (agradables y desagradables), generando los cuatro cuadrantes emocionales:</p>
+
+        <ul>
+  <li><span style="color: var(--red-mm); font-weight: 600;">Rojo</span>: Alta energía + desagradable</li>
+  <li><span style="color: var(--yellow-mm); font-weight: 600;">Amarillo</span>: Alta energía + agradable</li>
+  <li><span style="color: var(--blue-mm); font-weight: 600;">Azul</span>: Baja energía + desagradable</li>
+  <li><span style="color: var(--green-mm); font-weight: 600;">Verde</span>: Baja energía + agradable</li>
+</ul>
+
+        <p>Las emociones, como las entendemos, son etiquetas que se determinan a partir de estas dimensiones. Your EQ Trainer – Mood Meter traduce la experiencia interna autoreportada en un mapa que puedes observar, entender y entrenar.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
